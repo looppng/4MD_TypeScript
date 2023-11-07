@@ -368,3 +368,253 @@ console.log(isEven(-4));
 console.log(isEven(5));
 console.log(isEven(-111));
 
+
+// Write a function that takes two strings (a and b) as arguments
+// Return the number of times a occurs in b
+
+
+// myFunction('m', 'how many times does the character occur in this sentence?')
+// Expected
+// 2
+
+// myFunction('h', 'how many times does the character occur in this sentence?')
+// Expected
+// 4
+
+// myFunction('?', 'how many times does the character occur in this sentence?')
+// Expected
+// 1
+
+// myFunction('z', 'how many times does the character occur in this sentence?')
+// Expected
+// 0
+
+
+const getLetterCount = (a:string, b:string) : number => {
+    let count = 0;
+    let startIndex = 0;
+
+    while(true) {
+        startIndex = b.indexOf(a, startIndex);
+
+        if (startIndex !== -1) {
+            count++
+            startIndex += a.length;
+        } else {
+            break;
+        }
+    }
+
+    return count;
+}
+
+console.log("13.uzd");
+console.log(getLetterCount('m', 'how many times does the character occur in this sentence?'));
+console.log(getLetterCount('h', 'how many times does the character occur in this sentence?'));
+console.log(getLetterCount('?', 'how many times does the character occur in this sentence?'));
+console.log(getLetterCount('z', 'how many times does the character occur in this sentence?'));
+
+
+// Write a function that takes a number (a) as argument
+// If a is a whole number (has no decimal place), return true
+// Otherwise, return false
+
+// myFunction(4)
+// Expected
+// true 
+
+// myFunction(1.123)
+// Expected
+// false 
+
+// myFunction(1048)
+// Expected
+// true 
+
+// myFunction(10.48)
+// Expected
+// false
+
+const isWhole = (a:number) : boolean => {
+    return a === Math.floor(a);
+}
+
+console.log("14.uzd");
+console.log(isWhole(4));
+console.log(isWhole(1.123));
+console.log(isWhole(1048));
+console.log(isWhole(10.48));
+
+
+// Write a function that takes two numbers (a and b) as arguments
+// If a is smaller than b, divide a by b
+// Otherwise, multiply both numbers
+// Return the resulting value
+
+// myFunction(10, 100)
+// Expected
+// 0.1
+
+// myFunction(90, 45)
+// Expected
+// 4050
+
+// myFunction(8, 20)
+// Expected
+// 0.4
+
+// myFunction(2, 0.5)
+// Expected
+// 1
+
+
+const divideOrMultiply = (a:number, b:number) : number => {
+    if (a < b) {
+        return a / b;
+    } else {
+        return a * b;
+    }
+}
+
+console.log("15.uzd");
+console.log(divideOrMultiply(10, 100));
+console.log(divideOrMultiply(90, 45));
+console.log(divideOrMultiply(8, 20));
+console.log(divideOrMultiply(2, 0.5));
+
+
+// Write a function that takes two strings (a and b) as arguments
+// If a contains b, append b to the beginning of a
+// If not, append it to the end
+// Return the concatenation
+
+// myFunction('cheese', 'cake')
+// Expected
+// 'cheesecake'
+
+// myFunction('lips', 's')
+// Expected
+// 'slips'
+
+// myFunction('Java', 'script')
+// Expected
+// 'Javascript'
+
+// myFunction(' think, therefore I am', 'I')
+// Expected
+// 'I think, therefore I am'
+
+
+const whereToAdd = (a: string, b: string) : string => {
+    if (a.includes(b)) {
+        return b + a;
+    } else {
+        return a + b;
+    }
+}
+
+console.log("16.uzd");
+console.log(whereToAdd('cheese', 'cake'));
+console.log(whereToAdd('lips', 's'));
+console.log(whereToAdd('Java', 'script'));
+console.log(whereToAdd(' think, therefore I am', 'I'));
+
+
+// Write a function that takes a number (a) as argument
+// Round a to the 2nd digit after the comma
+// Return the rounded number
+
+// myFunction(2.12397)
+// Expected
+// 2.12
+
+// myFunction(3.136)
+// Expected
+// 3.14
+
+// myFunction(1.12397)
+// Expected
+// 1.12
+
+// myFunction(26.1379)
+// Expected
+// 26.14
+
+
+const roundToSecondDigit = (a:number) : number => {
+    return Number(a.toFixed(2));
+}
+
+console.log("17.uzd");
+console.log(roundToSecondDigit(2.12397));
+console.log(roundToSecondDigit(3.136));
+console.log(roundToSecondDigit(1.12397));
+console.log(roundToSecondDigit(26.1379));
+
+
+// Write a function that takes a number (a) as argument
+// Split a into its individual digits and return them in an array
+// Tip: you might want to change the type of the number for the splitting
+
+// myFunction(10)
+// Expected
+// [1,0]
+
+// myFunction(931)
+// Expected
+// [9,3,1]
+
+// myFunction(193278)
+// Expected
+// [1,9,3,2,7,8]
+
+
+const splitNumbers = (a:number) : number[] => {
+    const digitAsString = a.toString();
+    const digits = digitAsString.split('').map(Number);
+    return digits;
+}
+
+console.log("18.uzd");
+console.log(splitNumbers(10));
+console.log(splitNumbers(931));
+console.log(splitNumbers(193278));
+
+
+// It seems like something happened to these strings
+// Can you figure out how to clear up the chaos?
+// Write a function that joins these strings together such that they form the following words:
+// 'Javascript', 'Countryside', and 'Downtown'
+// You might want to apply basic JS string methods such as replace(), split(), slice() etc.
+
+// myFunction('java', 'tpi%rcs')
+// Expected
+// 'Javascript'
+
+// myFunction('c%ountry', 'edis')
+// Expected
+// 'Countryside'
+
+// myFunction('down', 'nw%ot')
+// Expected
+// 'Downtown'
+
+
+const clearFullString = (a: string, b: string) : string => {
+    const FullString = a + b;
+
+    const clearedFullString = FullString
+      .replace(/[^a-zA-Z]/g, '') 
+      .replace('javatpircs', 'Javascript')
+      .replace('countryedis', 'Countryside') 
+      .replace('downnwot', 'Downtown')
+    return clearedFullString;
+}
+
+console.log("19.uzd");
+console.log(clearFullString('java', 'tpi%rcs'));
+console.log(clearFullString('c%ountry', 'edis'));
+console.log(clearFullString('down', 'nw%ot'));
+
+
+
