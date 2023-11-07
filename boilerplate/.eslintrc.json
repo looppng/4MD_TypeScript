@@ -21,6 +21,7 @@
         "lines-between-class-members": "off",
         "class-methods-use-this": "off",
         "import/extensions": "off",
-        "import/no-unresolved": "off"
+        "import/no-unresolved": "off",
+        "no-console": "off"
     }
 }
