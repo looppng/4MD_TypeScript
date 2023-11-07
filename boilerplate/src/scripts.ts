@@ -617,4 +617,134 @@ console.log(clearFullString('c%ountry', 'edis'));
 console.log(clearFullString('down', 'nw%ot'));
 
 
+// This challenge is a little bit more complex
+// Write a function that takes a number (a) as argument
+// If a is prime, return a
+// If not, return the next higher prime number
 
+// myFunction(38)
+// Expected
+// 41
+
+// myFunction(7)
+// Expected
+// 7
+
+// myFunction(115)
+// Expected
+// 127
+
+// myFunction(2000)
+// Expected
+// 2003
+
+const isPrime = (num:number) : boolean => {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+    if (num % 2 === 0 || num % 3 === 0) return false;
+    let i = 5;
+    while (i * i <= num) {
+      if (num % i === 0 || num % (i + 2) === 0) return false;
+      i += 6;
+    }
+    return true;
+  }
+  
+const findNextPrime = (a:number) : number => {
+    let next = a;
+    while (!isPrime(next)) {
+      next++;
+    }
+    return next;
+  }
+  
+const returnPrime = (a:number) : number => {
+    if (isPrime(a)) {
+      return a;
+    } else {
+      return findNextPrime(a);
+    }
+  }
+
+console.log("19.uzd");
+console.log(returnPrime(38));
+console.log(returnPrime(7));
+console.log(returnPrime(115));
+console.log(returnPrime(2000));
+
+
+// Write a function that takes two numbers, say x and y, as arguments
+// Check if x is divisible by y
+// If yes, return x
+// If not, return the next higher natural number that is divisible by y
+
+// myFunction(1, 23)
+// Expected
+// 23
+
+// myFunction(23, 23)
+// Expected
+// 23
+
+// myFunction(7, 3)
+// Expected
+// 9
+
+// myFunction(-5, 7)
+// Expected
+// 0
+
+
+const isDivisible = (x:number, y:number) : number => {
+    if (x % y === 0) {
+        return x;
+    } else {
+        const nextDivisible = Math.ceil(x / y) * y;
+        return nextDivisible;
+    }
+}
+
+console.log("20.uzd");
+console.log(isDivisible(1, 23));
+console.log(isDivisible(23, 23));
+console.log(isDivisible(7, 3));
+console.log(isDivisible(-5, 7));
+
+
+// Write a function that takes two strings (a and b) as arguments
+// Beginning at the end of 'a', insert 'b' after every 3rd character of 'a'
+// Return the resulting string
+
+// myFunction('1234567','.')
+// Expected
+// '1.234.567'
+
+// myFunction('abcde','$')
+// Expected
+// 'ab$cde'
+
+// myFunction('zxyzxyzxyzxyzxyz','w')
+// Expected
+// 'zwxyzwxyzwxyzwxyzwxyz'
+
+
+const everyThird = (a:string, b:string) : string => {
+    const result = [];
+    
+    for (let i = 0; i < a.length; i++) {
+      result.push(a[i]);
+  
+      if ((i + 1) % 3 === 0) {
+        result.push(b);
+      }
+    }
+  
+    return result.join('');
+  }
+
+
+  console.log("21.uzd");
+  console.log(everyThird('1234567','.'));
+  console.log(everyThird('abcde','$'));
+  console.log(everyThird('zxyzxyzxyzxyzxyz','w'));
+  console.log(everyThird('sportastundas','!'));
