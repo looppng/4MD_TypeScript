@@ -1253,8 +1253,8 @@ console.log(isSameDay(new Date('2001/01/01'), new Date('2000/01/01')));
 console.log(isSameDay(new Date('2000/11/01'), new Date('2000/01/01')));
 
 
-// !SPREAD OPERATOR 
-// !Use spread operator in all tasks
+// SPREAD OPERATOR 
+// Use spread operator in all tasks
 
 
 // Write a function that takes two number arrays as parameters 
@@ -1280,6 +1280,87 @@ const newArrWithSameElements = (...args: Array<Array<number>>): Array<number> =>
 console.log("64.uzd");
 console.log(newArrWithSameElements([1, 2], [3, 4]));
 console.log(newArrWithSameElements([1, 2], [3, 4, 5, 6]));
+
+
+// Write a function that takes an array and a string as parameters 
+// and return an array which contains all elements from the given array
+// and the given string as the last element
+
+const addElementToArray = (arr: Array<string>, element: string): Array<string> => {
+    return [...arr, element];
+}
+
+console.log("65.uzd");
+console.log(addElementToArray(['Apple', 'Orange', 'Banana'], 'Kiwi'));
+console.log(addElementToArray(['Apple', 'Orange', 'Strawberry'], 'Lemon'));
+
+
+// Write a function that takes an array and a string as parameters 
+// and return an array which contains all elements from the given array
+// and the given string as the first element
+
+// myFunction(['Apple', 'Orange', 'Banana'], 'Kiwi'); 
+// Expected
+// ['Kiwi', 'Apple', 'Orange', 'Banana']
+
+const addElementToArrFirst = (arr: Array<string>, element: string): Array<string> => {
+    arr.unshift(element);
+    return [...arr, element];
+}
+
+console.log("66.uzd");
+console.log(addElementToArrFirst(['Apple', 'Orange', 'Banana'], 'Kiwi'));
+console.log(addElementToArrFirst(['Apple', 'Orange', 'Strawberry'], 'Lemon'));
+
+
+// Write a function that takes two objects as parameters 
+// and return an object which contains properties from both 
+// objects using spread operator
+
+// myFunction({ a:1, b:2 }, { c:3, d:4 }) 
+// Expected
+// { a:1, b:2, c:3, d:4 }
+
+// myFunction({ a:1, b:2 }, { c:3, d:4, e:5, f:6 }) 
+// Expected
+// { a:1, b:2, c:3, d:4, e:5, f:6 }
+
+
+
+const newObjWithSameProperties = (...args: Array<Object>): Object => {
+    const result: Object = {};
+    for (const obj of args) {
+        Object.assign(result, obj);
+    }
+    return result;
+}
+
+console.log("67.uzd");
+console.log(newObjWithSameProperties({ a: 1, b: 2 }, { c: 3, d: 4 }));
+console.log(newObjWithSameProperties({ a: 1, b: 2 }, { c: 3, d: 4, e: 5, f: 6 }));
+
+
+// Write a function that takes an object and a string as parameters 
+// and return an object which contains properties from the given object
+// and a new property favoriteMovie with the value equal to the given string and using spread operator
+
+// myFunction({ eyeColor: 'green', age: 10 }, 'Garfield') 
+// Expected
+// { eyeColor: 'green', age: 10, favoriteMovie:  'Garfield' }
+
+// myFunction({ eyeColor: 'blue', age: 15 }, 'Twilight') 
+// Expected
+// { eyeColor: 'blue', age: 15, favoriteMovie:  'Twilight' }
+
+const newObjWithFavoriteMovie = (obj: Object, favoriteMovie: string): Object => {
+    return {...obj, favoriteMovie };
+}
+
+console.log("68.uzd");
+console.log(newObjWithFavoriteMovie({ eyeColor: 'green', age: 10 }, 'favoriteMovie', 'Garfield'));
+console.log(newObjWithFavoriteMovie({ eyeColor: 'blue', age: 15 }, 'favoriteMovie', 'Twilight'));
+
+
 
 
 
