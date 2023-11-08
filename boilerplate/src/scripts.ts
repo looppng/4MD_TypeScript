@@ -424,7 +424,7 @@ const everyThird = (a:string, b:string) : string => {
 // Increment each letter to the next letter in the alphabet
 // Return the correct word
 
-function incrementStringLetters(inputString: string) : string {
+const incrementStringLetters = (inputString: string) : string  => {
     const result = inputString.split('').map(char => {
       if (char >= 'a' && char <= 'z') {
         // Handle lowercase letters
@@ -449,7 +449,7 @@ function incrementStringLetters(inputString: string) : string {
     });
   
     return result.join('');
-  }
+}
   
   console.log("22.uzd");
   console.log(incrementStringLetters('bnchmf'));
@@ -466,7 +466,7 @@ function nthArray<T>(a: T[], n: number): T | undefined {
     } else {
       return undefined;
     }
-  }
+}
 
 console.log("23.uzd");
 console.log(nthArray([1,2,3,4,5], 2));
@@ -536,9 +536,179 @@ const lastNArray = (a:number[], n:number) => {
     } else {
       return [];
     }
-  }
+}
 
 console.log("27.uzd");
 console.log(lastNArray([1, 2, 3, 4, 5], 2));
 console.log(lastNArray([1, 2, 3], 6));
 console.log(lastNArray([1, 2, 3, 4, 5, 6, 7, 8], 3));
+
+
+// Write a function that takes an array (a) and a value (b) as argument
+// The function should clean a from all occurrences of b
+// Return the filtered array
+
+const remElArray = <T>(a: T[], b: T): T[] => {
+    if (Array.isArray(a)) {
+      return a.filter(item => item !== b);
+    } else {
+      return a;
+    }
+}
+
+console.log("28.uzd");
+console.log(remElArray([1,2,3], 2));
+console.log(remElArray([1,2,'2'], '2'));
+console.log(remElArray([false,'2',1], false));
+console.log(remElArray([1,2,'2',1], 1));
+
+
+// Write a function that takes an array (a) as argument
+// Return the number of elements in a
+
+const arrLength = (a:number[]) => {
+    if (Array.isArray(a)) {
+        return a.length;
+      } else {
+        return 0;
+      }
+}
+
+console.log("29.uzd");
+console.log(arrLength([1,2,2,4]));
+console.log(arrLength([9,9,9]));
+console.log(arrLength([4,3,2,1,0]));
+
+
+// Write a function that takes an array of numbers as argument
+// Return the number of negative values in the array
+
+const getNegativeCount = (a:number[]) => {
+    if (Array.isArray(a)) {
+        let count = 0; 
+    
+        for (let i = 0; i < a.length; i++) {
+          if (a[i] < 0) {
+            count++; 
+          }
+        }
+    
+        return count;
+      } else {
+        return 0; 
+      }
+}
+
+console.log("30.uzd");
+console.log(getNegativeCount([1,-2,2,-4]));
+console.log(getNegativeCount([0,9,1]));
+console.log(getNegativeCount([4,-3,2,1,0]));
+
+
+// Write a function that takes an array of numbers as argument
+// It should return an array with the numbers sorted in descending order
+
+const sortDescending = (a:number[]) => {
+    if (Array.isArray(a)) {
+        return a.slice().sort((a, b) => b - a); 
+    } else {
+        return a; 
+    }
+}
+
+console.log("31.uzd");
+console.log(sortDescending([1,3,2]));
+console.log(sortDescending([4,2,3,1]));
+
+
+// Write a function that takes an array of strings as argument
+// Sort the array elements alphabetically
+// Return the result
+
+const sortArray = (a:string[]) => {
+    if (Array.isArray(a)) {
+        return a.slice().sort(); 
+    } else {
+        return a; 
+    }
+}
+
+console.log("32.uzd");
+console.log(sortArray(['b', 'c', 'd', 'a']));
+console.log(sortArray(['z', 'c', 'd', 'a', 'y', 'a', 'w']));
+
+
+// Write a function that takes an array of numbers as argument
+// It should return the average of the numbers
+
+const arrayAverage = (numbers:number[]) => {
+    if (Array.isArray(numbers) && numbers.length > 0) {
+        const sum = numbers.reduce((acc, number) => acc + number, 0);
+        return sum / numbers.length;
+      } else {
+        return 0;
+      }
+}
+
+console.log("33.uzd");
+console.log(arrayAverage([10,100,40]));
+console.log(arrayAverage([10,100,1000]));
+console.log(arrayAverage([-50,0,50,200]));
+
+
+// Write a function that takes an array of strings as argument
+// Return the longest string
+
+// myFunction(['help', 'me'])
+// Expected
+// 'help'
+
+// myFunction(['I', 'need', 'candy'])
+// Expected
+// 'candy'
+
+const findLongestString = (strings:string[]) => {
+    if (Array.isArray(strings) && strings.length > 0) {
+      let longest = strings[0];
+  
+      for (let i = 1; i < strings.length; i++) {
+        if (strings[i].length > longest.length) {
+          longest = strings[i];
+        }
+      }
+  
+      return longest;
+    } else {
+      return null;
+    }
+}
+
+console.log("34.uzd");
+console.log(findLongestString(['help', 'me']));
+console.log(findLongestString(['I', 'need', 'candy']));
+
+
+// Write a function that takes an array as argument
+// It should return true if all elements in the array are equal
+// It should return false otherwise
+
+// myFunction([true, true, true, true])
+// Expected
+// true 
+
+// myFunction(['test', 'test', 'test'])
+// Expected
+// true 
+
+// myFunction([1,1,1,2])
+// Expected
+// false 
+
+// myFunction(['10',10,10,10])
+// Expected
+// false
+
+
+
+
+
