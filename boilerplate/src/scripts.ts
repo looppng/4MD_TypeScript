@@ -692,23 +692,128 @@ console.log(findLongestString(['I', 'need', 'candy']));
 // It should return true if all elements in the array are equal
 // It should return false otherwise
 
-// myFunction([true, true, true, true])
+const checkEqual = <T>(arr:T[]) : boolean => {
+        if (Array.isArray(arr) && arr.length > 0) {
+          for (let i = 1; i < arr.length; i++) {
+            if (arr[i] !== arr[0]) {
+              return false; 
+            }
+          }
+          return true; 
+        } else {
+          return false; 
+        }
+}
+
+console.log("35.uzd");
+console.log(checkEqual([true, true, true, true]));
+console.log(checkEqual(['test', 'test', 'test']));
+console.log(checkEqual([1,1,1,2]));
+console.log(checkEqual(['10',10,10,10]));
+
+
+// Write a function that takes arguments an arbitrary number of arrays
+// It should return an array containing the values of all arrays
+
+const concatArr = <T>(...arrays: (T | boolean | string)[][]): (T | boolean | string)[] => {
+    return ([] as (T | boolean | string)[]).concat(...arrays);
+}
+
+console.log("36.uzd");
+console.log(concatArr([1, 2, 3], [4, 5, 6]));
+console.log(concatArr(['a', 'b', 'c'], [4, 5, 6]));
+console.log(concatArr([true, true], [1, 2], ['a', 'b']));
+
+
+// Write a function that takes an array of objects as argument
+// Sort the array by property b in ascending order
+// Return the sorted array
+
+function sortObjArr<T>(arr: T[]): T[] {
+    if (Array.isArray(arr)) {
+      return arr.slice().sort();
+    } else {
+      return arr; 
+    }
+  }
+
+console.log("!37.uzd");
+console.log(sortObjArr([{a:1,b:2},{a:5,b:4}]));
+console.log(sortObjArr([{a:1,b:7},{a:2,b:1}]));
+console.log(sortObjArr([{a:1,b:7},{a:2,b:1}]));
+
+
+// Write a function that takes two arrays as arguments
+// Merge both arrays and remove duplicate values
+// Sort the merge result in ascending order
+// Return the resulting array
+
+const mergeAndSortArrays = (arr1: number[], arr2: number[]): number[] => {
+    const mergedArray = [...new Set([...arr1, ...arr2])];
+    return mergedArray.sort((a, b) => a - b);
+  }
+
+console.log("38.uzd");
+console.log(mergeAndSortArrays([1, 2, 3], [3, 4, 5]));
+console.log(mergeAndSortArrays([-10, 22, 333, 42], [-11, 5, 22, 41, 42]));
+
+
+// Write a function that takes an array (a) and a number (b) as arguments
+// Sum up all array elements with a value greater than b
+// Return the sum
+
+const sumArrayElementsGreaterThanB = (arr: number[], b: number): number => {
+    if (!Array.isArray(arr)) {
+      return 0; 
+    }
+  
+    const sum = arr.reduce((accumulator, currentValue) => {
+      if (currentValue > b) {
+        return accumulator + currentValue;
+      }
+      return accumulator;
+    }, 0);
+  
+    return sum;
+  }
+
+console.log("39.uzd");
+console.log(sumArrayElementsGreaterThanB([1, 2, 3, 4, 5, 6, 7], 2));
+console.log(sumArrayElementsGreaterThanB([-10, -11, -3, 1, -4], -3));
+console.log(sumArrayElementsGreaterThanB([78, 99, 100, 101, 401], 99));
+
+
+// Write a function that takes two numbers (min and max) as arguments
+// Return an array of numbers in the range min to max
+
+// myFunction(2, 10)
 // Expected
-// true 
+// [2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-// myFunction(['test', 'test', 'test'])
+// myFunction(1, 3)
 // Expected
-// true 
+// [1, 2, 3]
 
-// myFunction([1,1,1,2])
+// myFunction(-5, 5)
 // Expected
-// false 
+// [-5, -4, -3, -2, -1, 0,  1,  2,  3,  4, 5]
 
-// myFunction(['10',10,10,10])
+// myFunction(2, 7)
 // Expected
-// false
+// [2, 3, 4, 5, 6, 7]
 
+const range = (min: number, max: number): number[] => {
+    if (typeof min!== 'number' || typeof max!== 'number') {
+      return [];
+    }
+    return Array.from({ length: max - min + 1 }, (v, k) => k + min);
+}
 
+console.log("40.uzd");
+console.log(range(2, 10));
+console.log(range(1, 3));
+console.log(range(-5, 5));
+console.log(range(2, 7));
 
 
 
