@@ -1,28 +1,17 @@
 import $ from 'jquery';
 import sum from './utils/sum/sum';
 
-// console.log('Ready for coding');
+console.log('Ready for coding');
 
-// console.log('Body jQuery node:', $('body'));
-// console.log('Body javascript node:', document.querySelector('body'));
-// console.log('2 + 6 =', sum(2, 3));
+console.log('Body jQuery node:', $('body'));
+console.log('Body javascript node:', document.querySelector('body'));
+console.log('2 + 6 =', sum(2, 3));
 
 
-// 1. Write a function that takes two numbers (a and b) as argument
+// Write a function that takes two numbers (a and b) as argument
 // Sum a and b
 // Return the result
 
-// myFunction(1,2)
-// Expected
-// 3
-
-// myFunction(1,10)
-// Expected
-// 11
-
-// myFunction(99,1)
-// Expected
-// 100
 
 const saskaitit = (a:number, b:number) : number => a + b;
 
@@ -34,31 +23,6 @@ console.log(saskaitit(99,1));
 
 // Write a function that takes a value as argument
 //    Return the type of the value
-
-// myFunction(1)
-// Expected
-// 'number'
-
-// myFunction(false)
-// Expected
-// 'boolean'
-
-// myFunction({})
-// Expected
-// 'object'
-
-// myFunction(null)
-// Expected
-// 'object'
-
-// myFunction('string')
-// Expected
-// 'string'
-
-// myFunction(['array'])
-// Expected
-// 'object'
-
 
 const whatType = (value:any) : string => {
     return typeof value;
@@ -76,23 +40,6 @@ console.log(whatType(['array']));
 // Write a function that takes two values, say a and b, as arguments
 // Return true if the two values are equal and of the same type
 
-// myFunction(2, 3)
-// Expected
-// false 
-
-// myFunction(3, 3)
-// Expected
-// true 
-
-// myFunction(1, '1')
-// Expected
-// false 
-
-// myFunction('10', '10')
-// Expected
-// true
-
-
 const compareValueType = (a:any, b:any) : boolean => {
     return a === b;
 }
@@ -106,19 +53,6 @@ console.log(compareValueType('10', '10'));
 
 // Write a function that takes a string (a) and a number (n) as arguments
 // Return the nth character of 'a'
-
-// myFunction('abcd',1)
-// Expected
-// 'a'
-
-// myFunction('zyxbwpl',5)
-// Expected
-// 'w'
-
-// myFunction('gfedcba',3)
-// Expected
-// 'e'
-
 
 const getNthChar = (a: string, b: number) : string => {
     if (b >= 0 && b < a.length) {
@@ -139,19 +73,6 @@ console.log(getNthChar('service',9));
 // Remove the first 3 characters of a
 // Return the result
 
-// myFunction('abcdefg')
-// Expected
-// 'defg'
-
-// myFunction('1234')
-// Expected
-// '4'
-
-// myFunction('fgedcba')
-// Expected
-// 'dcba'
-
-
 const remChar = (a:string) : string => {
     if (a.length < 3) {
         return '';
@@ -170,19 +91,6 @@ console.log(remChar('sos'));
 // Extract the last 3 characters from the string
 // Return the result
 
-// myFunction('abcdefg')
-// Expected
-// 'efg'
-
-// myFunction('1234')
-// Expected
-// '234'
-
-// myFunction('fgedcba')
-// Expected
-// 'cba'
-
-
 const remCharEnd = (a:string) : string => {
     if (a.length < 3) {
         return a;
@@ -200,19 +108,6 @@ console.log(remCharEnd('fgedcba'));
 // Get the first 3 characters of a
 // Return the result
 
-// myFunction('abcdefg')
-// Expected
-// 'abc'
-
-// myFunction('1234')
-// Expected
-// '123'
-
-// myFunction('fgedcba')
-// Expected
-// 'fge'
-
-
 const getStringStart = (a:string) : string => {
     return a.slice(0, 3);
 }
@@ -226,19 +121,6 @@ console.log(getStringStart('fgedcba'));
 // Write a function that takes a string (a) as argument
 // Extract the first half a
 // Return the result
-
-// myFunction('abcdefgh')
-// Expected
-// 'abcd'
-
-// myFunction('1234')
-// Expected
-// '12'
-
-// myFunction('gedcba')
-// Expected
-// 'ged'
-
 
 const halfString = (a:string) : string => {
     const half = a.length / 2;
@@ -255,18 +137,6 @@ console.log(halfString('gedcba'));
 // Remove the last 3 characters of a
 // Return the result
 
-// myFunction('abcdefg')
-// Expected
-// 'abcd'
-
-// myFunction('1234')
-// Expected
-// '1'
-
-// myFunction('fgedcba')
-// Expected
-// 'fged'
-
 
 const remLastThree = (a:string) : string => {
     return a.slice(0, -3);
@@ -280,19 +150,6 @@ console.log(remLastThree('fgedcba'));
 
 // Write a function that takes two numbers (a and b) as argument
 // Return b percent of a
-
-// myFunction(100,50)
-// Expected
-// 50
-
-// myFunction(10,1)
-// Expected
-// 0.1
-
-// myFunction(500,25)
-// Expected
-// 125
-
 
 const getPercent = (a:number, b:number) : number => {
     return (a * (b / 100));
@@ -310,21 +167,7 @@ console.log(getPercent(500, 25));
 // Then multiply by d and divide by e
 // Finally raise to the power of f and return the result
 // Tip: mind the order
-
-// myFunction(6,5,4,3,2,1)
-// Expected
-// 10.5
-
-// myFunction(6,2,1,4,2,3)
-// Expected
-// 2744
-
-// myFunction(2,3,6,4,2,3)
-// Expected
-// -8
-
 // 2 + 3 - 1 (4 * 1 (4 / 2 (2x3))) = ?
-
 
 const Calculus = (a:number, b:number, c:number, d:number, e:number, f: number) : number => {
     const simple = a + b - c;
@@ -343,23 +186,6 @@ console.log(Calculus(2,3,6,4,2,3));
 // If the number is even, return true
 // Otherwise, return false
 
-// myFunction(10)
-// Expected
-// true
-
-// myFunction(-4)
-// Expected
-// true
-
-// myFunction(5)
-// Expected
-// false
-
-// myFunction(-111)
-// Expected
-// false
-
-
 const isEven = (a:number) : boolean => a % 2 === 0;
 
 console.log("12.uzd");
@@ -371,24 +197,6 @@ console.log(isEven(-111));
 
 // Write a function that takes two strings (a and b) as arguments
 // Return the number of times a occurs in b
-
-
-// myFunction('m', 'how many times does the character occur in this sentence?')
-// Expected
-// 2
-
-// myFunction('h', 'how many times does the character occur in this sentence?')
-// Expected
-// 4
-
-// myFunction('?', 'how many times does the character occur in this sentence?')
-// Expected
-// 1
-
-// myFunction('z', 'how many times does the character occur in this sentence?')
-// Expected
-// 0
-
 
 const getLetterCount = (a:string, b:string) : number => {
     let count = 0;
@@ -419,22 +227,6 @@ console.log(getLetterCount('z', 'how many times does the character occur in this
 // If a is a whole number (has no decimal place), return true
 // Otherwise, return false
 
-// myFunction(4)
-// Expected
-// true 
-
-// myFunction(1.123)
-// Expected
-// false 
-
-// myFunction(1048)
-// Expected
-// true 
-
-// myFunction(10.48)
-// Expected
-// false
-
 const isWhole = (a:number) : boolean => {
     return a === Math.floor(a);
 }
@@ -450,23 +242,6 @@ console.log(isWhole(10.48));
 // If a is smaller than b, divide a by b
 // Otherwise, multiply both numbers
 // Return the resulting value
-
-// myFunction(10, 100)
-// Expected
-// 0.1
-
-// myFunction(90, 45)
-// Expected
-// 4050
-
-// myFunction(8, 20)
-// Expected
-// 0.4
-
-// myFunction(2, 0.5)
-// Expected
-// 1
-
 
 const divideOrMultiply = (a:number, b:number) : number => {
     if (a < b) {
@@ -488,23 +263,6 @@ console.log(divideOrMultiply(2, 0.5));
 // If not, append it to the end
 // Return the concatenation
 
-// myFunction('cheese', 'cake')
-// Expected
-// 'cheesecake'
-
-// myFunction('lips', 's')
-// Expected
-// 'slips'
-
-// myFunction('Java', 'script')
-// Expected
-// 'Javascript'
-
-// myFunction(' think, therefore I am', 'I')
-// Expected
-// 'I think, therefore I am'
-
-
 const whereToAdd = (a: string, b: string) : string => {
     if (a.includes(b)) {
         return b + a;
@@ -524,23 +282,6 @@ console.log(whereToAdd(' think, therefore I am', 'I'));
 // Round a to the 2nd digit after the comma
 // Return the rounded number
 
-// myFunction(2.12397)
-// Expected
-// 2.12
-
-// myFunction(3.136)
-// Expected
-// 3.14
-
-// myFunction(1.12397)
-// Expected
-// 1.12
-
-// myFunction(26.1379)
-// Expected
-// 26.14
-
-
 const roundToSecondDigit = (a:number) : number => {
     return Number(a.toFixed(2));
 }
@@ -555,19 +296,6 @@ console.log(roundToSecondDigit(26.1379));
 // Write a function that takes a number (a) as argument
 // Split a into its individual digits and return them in an array
 // Tip: you might want to change the type of the number for the splitting
-
-// myFunction(10)
-// Expected
-// [1,0]
-
-// myFunction(931)
-// Expected
-// [9,3,1]
-
-// myFunction(193278)
-// Expected
-// [1,9,3,2,7,8]
-
 
 const splitNumbers = (a:number) : number[] => {
     const digitAsString = a.toString();
@@ -586,19 +314,6 @@ console.log(splitNumbers(193278));
 // Write a function that joins these strings together such that they form the following words:
 // 'Javascript', 'Countryside', and 'Downtown'
 // You might want to apply basic JS string methods such as replace(), split(), slice() etc.
-
-// myFunction('java', 'tpi%rcs')
-// Expected
-// 'Javascript'
-
-// myFunction('c%ountry', 'edis')
-// Expected
-// 'Countryside'
-
-// myFunction('down', 'nw%ot')
-// Expected
-// 'Downtown'
-
 
 const clearFullString = (a: string, b: string) : string => {
     const FullString = a + b;
@@ -621,22 +336,6 @@ console.log(clearFullString('down', 'nw%ot'));
 // Write a function that takes a number (a) as argument
 // If a is prime, return a
 // If not, return the next higher prime number
-
-// myFunction(38)
-// Expected
-// 41
-
-// myFunction(7)
-// Expected
-// 7
-
-// myFunction(115)
-// Expected
-// 127
-
-// myFunction(2000)
-// Expected
-// 2003
 
 const isPrime = (num:number) : boolean => {
     if (num <= 1) return false;
@@ -678,23 +377,6 @@ console.log(returnPrime(2000));
 // If yes, return x
 // If not, return the next higher natural number that is divisible by y
 
-// myFunction(1, 23)
-// Expected
-// 23
-
-// myFunction(23, 23)
-// Expected
-// 23
-
-// myFunction(7, 3)
-// Expected
-// 9
-
-// myFunction(-5, 7)
-// Expected
-// 0
-
-
 const isDivisible = (x:number, y:number) : number => {
     if (x % y === 0) {
         return x;
@@ -714,19 +396,6 @@ console.log(isDivisible(-5, 7));
 // Write a function that takes two strings (a and b) as arguments
 // Beginning at the end of 'a', insert 'b' after every 3rd character of 'a'
 // Return the resulting string
-
-// myFunction('1234567','.')
-// Expected
-// '1.234.567'
-
-// myFunction('abcde','$')
-// Expected
-// 'ab$cde'
-
-// myFunction('zxyzxyzxyzxyzxyz','w')
-// Expected
-// 'zwxyzwxyzwxyzwxyzwxyz'
-
 
 const everyThird = (a:string, b:string) : string => {
     const result = [];
@@ -748,3 +417,128 @@ const everyThird = (a:string, b:string) : string => {
   console.log(everyThird('abcde','$'));
   console.log(everyThird('zxyzxyzxyzxyzxyz','w'));
   console.log(everyThird('sportastundas','!'));
+
+
+//   Write a function that takes a string as argument
+// As it is, the string has no meaning
+// Increment each letter to the next letter in the alphabet
+// Return the correct word
+
+function incrementStringLetters(inputString: string) : string {
+    const result = inputString.split('').map(char => {
+      if (char >= 'a' && char <= 'z') {
+        // Handle lowercase letters
+        const nextCharCode = char.charCodeAt(0) + 1;
+        if (nextCharCode > 'z'.charCodeAt(0)) {
+          return 'a';
+        } else {
+          return String.fromCharCode(nextCharCode);
+        }
+      } else if (char >= 'A' && char <= 'Z') {
+        // Handle uppercase letters
+        const nextCharCode = char.charCodeAt(0) + 1;
+        if (nextCharCode > 'Z'.charCodeAt(0)) {
+          return 'A';
+        } else {
+          return String.fromCharCode(nextCharCode);
+        }
+      } else {
+        // Keep non-alphabetic characters unchanged
+        return char;
+      }
+    });
+  
+    return result.join('');
+  }
+  
+  console.log("22.uzd");
+  console.log(incrementStringLetters('bnchmf'));
+  console.log(incrementStringLetters('bgddrd'));
+  console.log(incrementStringLetters('sdrshmf'));
+
+
+// Write a function that takes an array (a) and a value (n) as argument
+// Return the nth element of 'a'
+
+function nthArray<T>(a: T[], n: number): T | undefined {
+    if (n >= 0 && n < a.length ) {
+      return a[n];
+    } else {
+      return undefined;
+    }
+  }
+
+console.log("23.uzd");
+console.log(nthArray([1,2,3,4,5], 2));
+console.log(nthArray([10,9,8,7,6], 4));
+console.log(nthArray([7,2,1,6,3], 0));
+
+
+// Write a function that takes an array (a) as argument
+// Remove the first 3 elements of 'a'
+// Return the result
+
+const spliceThree = (a:number[]) => {
+    if (Array.isArray(a) && a.length >= 3) {
+        a.splice(0, 3); 
+      }
+      return a;
+}
+
+console.log("24.uzd");
+console.log(spliceThree([1,2,3,4]));
+console.log(spliceThree([5,4,3,2,1,0]));
+console.log(spliceThree([99,1,1]));
+
+
+// Write a function that takes an array (a) as argument
+// Extract the last 3 elements of a
+// Return the resulting array
+
+const extractThree = (a:number[]) => {
+    if (Array.isArray(a) && a.length >= 3) {
+        return a.slice(-3);
+    } else {
+        return a;
+    }
+}
+
+console.log("25.uzd");
+console.log(extractThree([1,2,3,4]));
+console.log(extractThree([5,4,3,2,1,0]));
+console.log(extractThree([99,1,1]));
+
+
+// Write a function that takes an array (a) as argument
+// Extract the first 3 elements of a
+// Return the resulting array
+
+const slicedaArray = (a:number[]) => {
+    if (Array.isArray(a) && a.length >= 3) {
+        return a.slice(0, 3);
+    } else {
+        return a;
+    }
+}
+
+console.log("26.uzd");
+console.log(slicedaArray([1,2,3,4]));
+console.log(slicedaArray([5,4,3,2,1,0]));
+console.log(slicedaArray([99,1,1]));
+
+
+// Write a function that takes an array (a) and a number (n) as arguments
+// It should return the last n elements of a
+
+const lastNArray = (a:number[], n:number) => {
+    if (Array.isArray(a) && n > 0) {
+      return a.slice(-n); 
+    } else {
+      return [];
+    }
+  }
+
+console.log("27.uzd");
+console.log(lastNArray([1, 2, 3, 4, 5], 2));
+console.log(lastNArray([1, 2, 3], 6));
+console.log(lastNArray([1, 2, 3, 4, 5, 6, 7, 8], 3));
