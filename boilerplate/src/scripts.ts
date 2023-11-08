@@ -24,7 +24,7 @@ console.log(saskaitit(99,1));
 // Write a function that takes a value as argument
 //    Return the type of the value
 
-const whatType = (value:any) : string => {
+const whatType = <T>(value: T) : string => {
     return typeof value;
 }
 
@@ -202,20 +202,16 @@ const getLetterCount = (a:string, b:string) : number => {
     let count = 0;
     let startIndex = 0;
 
-    while(true) {
-        startIndex = b.indexOf(a, startIndex);
-
-        if (startIndex !== -1) {
-            count++
-            startIndex += a.length;
+    while (startIndex < b.length) {
+        if (b[startIndex] === a[0]) {
+            count++;
+            startIndex++;
         } else {
-            break;
+            startIndex++;
         }
     }
-
     return count;
 }
-
 console.log("13.uzd");
 console.log(getLetterCount('m', 'how many times does the character occur in this sentence?'));
 console.log(getLetterCount('h', 'how many times does the character occur in this sentence?'));
@@ -1051,18 +1047,6 @@ console.log(combObj({ a: 5, b: 4 }, { c: 3, b: 1, e: 2 }));
 // Multiply all values of 'a' by 'b'
 // Return the resulting object
 
-// myFunction({a:1,b:2,c:3},3)
-// Expected
-// {a:3,b:6,c:9}
-
-// myFunction({j:9,i:2,x:3,z:4},10)
-// Expected
-// {j:90,i:20,x:30,z:40}
-
-// myFunction({w:15,x:22,y:13},6)
-// Expected
-// {w:90,x:132,y:78}
-
 const multiplyObjectValues = <T extends number>(obj: Record<string, T>, multiplier: number): Record<string, number> => {
     const result: Record<string, number> = {};
   
@@ -1081,6 +1065,132 @@ console.log("55.uzd");
 console.log(multiplyObjectValues({a:1,b:2,c:3},3));
 console.log(multiplyObjectValues({j:9,i:2,x:3,z:4},10));
 console.log(multiplyObjectValues({w:15,x:22,y:13},6));
+
+
+// Write a function that takes an object as argument
+// Somehow, the properties and keys of the object got mixed up
+// Swap the Javascript object's key with its values and return the resulting object
+
+const swapKeyWithValues = <T extends string | number>(obj: Record<string, T>): Record<T, string> => {
+    const result: Record<T, string> = {} as Record<T, string>;
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        result[obj[key] as T] = key;
+      }
+    } 
+    return result;
+}
+
+console.log("56.uzd");
+console.log(swapKeyWithValues({z:'a',y:'b',x:'c',w:'d'}));
+console.log(swapKeyWithValues({2:'a',4:'b',6:'c',8:'d'}));
+console.log(swapKeyWithValues({a:1,z:24}));
+
+
+// Write a function that takes an object as argument
+// Some of the property values contain empty strings
+// Replace empty strings and strings that contain only whitespace with null values
+// Return the resulting object
+
+// myFunction({ a: 'a', b: 'b', c: '' })
+// Expected
+// { a: 'a', b: 'b', c: null }
+
+// myFunction({ a: '', b: 'b', c: ' ', d: 'd' })
+// Expected
+// { a: null, b: 'b', c: null, d: 'd' }
+
+// myFunction({ a: 'a', b: 'b ', c: ' ', d: '' })
+// Expected
+// { a: 'a', b: 'b ', c: null, d: null }
+
+const objReplaceEmptyStrings = (obj: Record<string, string>): Record<string, string | null> => {
+    const result: Record<string, string | null> = {};
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        result[key] = obj[key] === '' ? null : obj[key];
+      }
+    }
+    return result;
+}
+
+console.log("57.uzd");
+console.log(objReplaceEmptyStrings({ a: 'a', b: 'b', c: '' }));
+console.log(objReplaceEmptyStrings({ a: '', b: 'b', c:'', d: 'd' }));
+console.log(objReplaceEmptyStrings({ a: 'a', b: 'b ', c: '', d: '' }));
+
+
+// Write a function that takes an object as argument containing properties with personal information
+// Extract firstName, lastName, size, and weight if available
+// If size or weight is given transform the value to a string
+// Attach the unit cm to the size
+// Attach the unit kg to the weight
+// Return a new object with all available properties that we are interested in
+
+// myFunction({fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67})
+// Expected
+// {fn: 'Lisa', ln: 'Müller', size: '175cm', weight: '67kg'}
+
+// myFunction({fn: 'Martin', ln: 'Harper', age: 26, email: 'martin.harper@test.de', weight: 102})
+// Expected
+// {fn: 'Martin', ln: 'Harper', weight: '102kg'}
+
+// myFunction({fn: 'Andrew', ln: 'Harper', age: 81, size: 175, weight: 71})
+// Expected
+// {fn: 'Andrew', ln: 'Harper', size: '175cm', weight: '71kg'}
+
+// myFunction({fn: 'Matthew', ln: 'Müller', age: 19, email: 'matthew@mueller.de'})
+// Expected
+// {fn: 'Matthew', ln: 'Müller'}
+
+const extractPersonalInfo = (obj: Record<string, string | number>): Record<string, string | number> => {
+    const result: Record<string, string | number> = {};
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key === 'fn' || key === 'ln') {
+          result[key] = obj[key];
+        } else if (key ==='size' || key === 'weight') {
+          result[key] = `${obj[key]}cm`;
+        } else {
+          result[key] = obj[key];
+        }
+      }
+      if (key === 'age') {
+        result[key] = null;
+      } else if (key === 'email') {
+        result[key] = null;
+      }
+    }
+    return result;
+}
+
+console.log("58.uzd");
+console.log(extractPersonalInfo({fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67}));
+console.log(extractPersonalInfo({fn: 'Martin', ln: 'Harper', age: 26, email:'martin.harper@test.de', weight: 102}));
+console.log(extractPersonalInfo({fn: 'Andrew', ln: 'Harper', age: 81, size: 175, weight: 71}));
+console.log(extractPersonalInfo({fn: 'Matthew', ln: 'Müller', age: 19, email:'matthew@mueller.de'}));
+
+
+// Write a function that takes an array of objects and a string as arguments
+// Add a property with key 'continent' and value equal to the string to each of the objects
+// Return the new array of objects
+// Tip: try not to mutate the original array
+
+// myFunction([{ city: 'Tokyo', country: 'Japan' }, { city: 'Bangkok', country: 'Thailand' }], 'Asia')
+// Expected
+// [{ city: 'Tokyo', country: 'Japan', continent: 'Asia' }, { city: 'Bangkok', country: 'Thailand', continent: 'Asia' }]
+
+// myFunction([{ city: 'Stockholm', country: 'Sweden' }, { city: 'Paris', country: 'France' }], 'Europe')
+// Expected
+// [{ city: 'Stockholm', country: 'Sweden', continent: 'Europe' }, { city: 'Paris', country: 'France', continent: 'Europe' }]
+
+
+
+
+
+
+
+
 
 
 
