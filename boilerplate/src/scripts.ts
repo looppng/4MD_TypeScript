@@ -693,16 +693,16 @@ console.log(findLongestString(['I', 'need', 'candy']));
 // It should return false otherwise
 
 const checkEqual = <T>(arr:T[]) : boolean => {
-        if (Array.isArray(arr) && arr.length > 0) {
-          for (let i = 1; i < arr.length; i++) {
-            if (arr[i] !== arr[0]) {
-              return false; 
-            }
-          }
-          return true; 
-        } else {
-          return false; 
+    if (Array.isArray(arr) && arr.length > 0) {
+        for (let i = 1; i < arr.length; i++) {
+        if (arr[i] !== arr[0]) {
+            return false; 
         }
+        }
+        return true; 
+    } else {
+        return false; 
+    }
 }
 
 console.log("35.uzd");
@@ -735,7 +735,7 @@ function sortObjArr<T>(arr: T[]): T[] {
     } else {
       return arr; 
     }
-  }
+}
 
 console.log("!37.uzd");
 console.log(sortObjArr([{a:1,b:2},{a:5,b:4}]));
@@ -751,7 +751,7 @@ console.log(sortObjArr([{a:1,b:7},{a:2,b:1}]));
 const mergeAndSortArrays = (arr1: number[], arr2: number[]): number[] => {
     const mergedArray = [...new Set([...arr1, ...arr2])];
     return mergedArray.sort((a, b) => a - b);
-  }
+}
 
 console.log("38.uzd");
 console.log(mergeAndSortArrays([1, 2, 3], [3, 4, 5]));
@@ -775,7 +775,7 @@ const sumArrayElementsGreaterThanB = (arr: number[], b: number): number => {
     }, 0);
   
     return sum;
-  }
+}
 
 console.log("39.uzd");
 console.log(sumArrayElementsGreaterThanB([1, 2, 3, 4, 5, 6, 7], 2));
@@ -785,22 +785,6 @@ console.log(sumArrayElementsGreaterThanB([78, 99, 100, 101, 401], 99));
 
 // Write a function that takes two numbers (min and max) as arguments
 // Return an array of numbers in the range min to max
-
-// myFunction(2, 10)
-// Expected
-// [2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-// myFunction(1, 3)
-// Expected
-// [1, 2, 3]
-
-// myFunction(-5, 5)
-// Expected
-// [-5, -4, -3, -2, -1, 0,  1,  2,  3,  4, 5]
-
-// myFunction(2, 7)
-// Expected
-// [2, 3, 4, 5, 6, 7]
 
 const range = (min: number, max: number): number[] => {
     if (typeof min!== 'number' || typeof max!== 'number') {
@@ -814,6 +798,185 @@ console.log(range(2, 10));
 console.log(range(1, 3));
 console.log(range(-5, 5));
 console.log(range(2, 7));
+
+
+// Write a function that takes an array of strings as argument
+// Group those strings by their first letter
+// Return an object that contains properties with keys representing first letters
+// The values should be arrays of strings containing only the corresponding strings
+// For example, the array ['Alf', 'Alice', 'Ben'] should be transformed to
+// { a: ['Alf', 'Alice'], b: ['Ben']}
+
+const groupStringsByFirstLetter = (arr: string[]): Record<string, string[]> => {
+    if (!Array.isArray(arr)) {
+      return {};
+    }
+  
+    const grouped: Record<string, string[]> = {};
+  
+    arr.forEach((str) => {
+      const firstLetter = str.charAt(0).toLowerCase(); 
+      if (!grouped[firstLetter]) {
+        grouped[firstLetter] = [];
+      }
+      grouped[firstLetter].push(str);
+    });
+  
+    return grouped;
+}
+
+
+console.log("41.uzd");
+console.log(groupStringsByFirstLetter(['Alf', 'Alice', 'Ben']));
+console.log(groupStringsByFirstLetter(['Ant', 'Bear', 'Bird']));
+console.log(groupStringsByFirstLetter(['Berlin', 'Paris', 'Prague']));
+
+
+// Write a function that takes an array with arbitrary elements and a number as arguments
+// Return a new array, the first element should be either the given number itself
+// or zero if the number is smaller than 6
+// The other elements should be the elements of the original array
+// Try not to mutate the original array
+
+const arrayEx = <T, N extends number>(arr: T[], num: N): (T | N)[] => {
+    if (!Array.isArray(arr)) {
+      return [];
+    }
+  
+    if (num <= 6) {
+      return [num,...arr];
+    }
+  
+    return arr;
+}
+
+console.log("!42.uzd");
+console.log(arrayEx([1,2,3], 6));
+console.log(arrayEx(['a','b'], 2));
+console.log(arrayEx([null,false], 11));
+
+
+// Write a function that takes an array (a) and a value (n) as arguments
+// Save every nth element in a new array
+// Return the new array
+
+const saveEveryNthElement = <T>(arr: T[], n: number): T[] => {
+    if (!Array.isArray(arr)) {
+      return [];
+    } 
+
+    const result: T[] = [];
+    for (let i = n - 1; i < arr.length; i += n) {
+      result.push(arr[i]);
+    }
+  
+    return result;
+}
+
+console.log("43.uzd");
+console.log(saveEveryNthElement([1,2,3,4,5,6,7,8,9,10],3));
+console.log(saveEveryNthElement([10,9,8,7,6,5,4,3,2,1],5));
+console.log(saveEveryNthElement([7,2,1,6,3,4,5,8,9,10],2));
+
+
+// Write a function that takes an object with two properties as argument
+// It should return the value of the property with key country
+
+const getObjCountry = (obj: { continent: string, country: string }): string => {
+    return obj.country;
+}
+
+console.log("44.uzd");
+console.log(getObjCountry({ continent: 'Asia', country: 'Japan'}));
+console.log(getObjCountry({ country: 'Sweden', continent: 'Europe'}));
+
+
+// Write a function that takes an object with two properties as argument
+// It should return the value of the property with key 'prop-2'
+// Tip: you might want to use the square brackets property accessor
+
+const getObjProp2 = <T>(obj: Record<string, T>): T | undefined => {
+    return obj['prop-2'];
+  }
+  
+console.log("45.uzd");
+console.log(getObjProp2({  one: 1,  'prop-2': 2}));
+console.log(getObjProp2({  'prop-2': 'two',  prop: 'test'}));
+
+
+// Write a function that takes an object with two properties and a string as arguments
+// It should return the value of the property with key equal to the value of the string
+
+const returnObjProperty = <T>(obj: Record<string, T>, key: string): T | undefined => {
+    return obj[key];
+  }
+  
+console.log("46.uzd");
+console.log(returnObjProperty({  continent: 'Asia',  country: 'Japan'}, 'continent'));
+console.log(returnObjProperty({  country: 'Sweden',  continent: 'Europe'}, 'country'));
+
+
+// Write a function that takes an object (a) and a string (b) as argument
+// Return true if a has a property with key b
+// Return false otherwise
+
+const checkIfObjHasProperty = <T>(obj: Record<string, T>, key: string): boolean => {
+    return Object.prototype.hasOwnProperty.call(obj, key);
+  }
+  
+console.log("47.uzd");
+console.log(checkIfObjHasProperty({a:1,b:2,c:3},'b'));
+console.log(checkIfObjHasProperty({x:'a',y:'b',z:'c'},'a'));
+console.log(checkIfObjHasProperty({x:'a',y:'b',z:'c'},'z'));
+
+
+// Write a function that a string (a) as argument
+// Create an object that has a property with key 'key' and a value of a
+// Return the object
+
+const getKey = (key: string): Record<string, string> => {
+    return {key};
+}
+
+console.log("48.uzd");
+console.log(getKey('a'));
+console.log(getKey('z'));
+console.log(getKey('b'));
+
+
+// Write a function that takes two strings (a and b) as arguments
+// Create an object that has a property with key 'a' and a value of 'b'
+// Return the object
+
+// myFunction('a','b')
+// Expected
+// {a:'b'}
+
+// myFunction('z','x')
+// Expected
+// {z:'x'}
+
+// myFunction('b','w')
+// Expected
+// {b:'w'}
+
+const createObject = (key: string, value: string): Record<string, string> => {
+    return { [key]: value };
+}
+
+console.log("49.uzd");
+console.log(createObject('a','b'));
+console.log(createObject('z','x'));
+console.log(createObject('b','w'));
+
+
+
+
+
+
+
+
+
 
 
 
