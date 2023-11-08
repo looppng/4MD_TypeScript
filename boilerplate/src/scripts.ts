@@ -1315,7 +1315,7 @@ console.log(addElementToArrFirst(['Apple', 'Orange', 'Strawberry'], 'Lemon'));
 
 // Write a function that takes two objects as parameters 
 // and return an object which contains properties from both 
-// objects using spread operator
+// objects using spread operator using spread operator
 
 // myFunction({ a:1, b:2 }, { c:3, d:4 }) 
 // Expected
@@ -1327,8 +1327,8 @@ console.log(addElementToArrFirst(['Apple', 'Orange', 'Strawberry'], 'Lemon'));
 
 
 
-const newObjWithSameProperties = (...args: Array<Object>): Object => {
-    const result: Object = {};
+const newObjWithSameProperties = (...args: Array<Record<string, number>>): Record<string, number> => {
+    const result: Record<string, number> = {};
     for (const obj of args) {
         Object.assign(result, obj);
     }
@@ -1352,13 +1352,13 @@ console.log(newObjWithSameProperties({ a: 1, b: 2 }, { c: 3, d: 4, e: 5, f: 6 })
 // Expected
 // { eyeColor: 'blue', age: 15, favoriteMovie:  'Twilight' }
 
-const newObjWithFavoriteMovie = (obj: Object, favoriteMovie: string): Object => {
+const newObjWithFavoriteMovie = (obj: Record<string | number, number | string>, favoriteMovie: string): Record<string | number, number | string> => {
     return {...obj, favoriteMovie };
 }
 
 console.log("68.uzd");
-console.log(newObjWithFavoriteMovie({ eyeColor: 'green', age: 10 }, 'favoriteMovie', 'Garfield'));
-console.log(newObjWithFavoriteMovie({ eyeColor: 'blue', age: 15 }, 'favoriteMovie', 'Twilight'));
+console.log(newObjWithFavoriteMovie({ eyeColor: 'green', age: 10 }, 'Garfield'));
+console.log(newObjWithFavoriteMovie({ eyeColor: 'blue', age: 15 }, 'Twilight'));
 
 
 
