@@ -1176,13 +1176,121 @@ console.log(extractPersonalInfo({fn: 'Matthew', ln: 'Müller', age: 19, email:'m
 // Return the new array of objects
 // Tip: try not to mutate the original array
 
-// myFunction([{ city: 'Tokyo', country: 'Japan' }, { city: 'Bangkok', country: 'Thailand' }], 'Asia')
-// Expected
-// [{ city: 'Tokyo', country: 'Japan', continent: 'Asia' }, { city: 'Bangkok', country: 'Thailand', continent: 'Asia' }]
+const addContinent = (arr: Array<Record<string, string>>, continent: string): Array<Record<string, string>> => {
+    for (const obj of arr) {
+        obj['continent'] = continent;
+    }
+    return arr;
+}
 
-// myFunction([{ city: 'Stockholm', country: 'Sweden' }, { city: 'Paris', country: 'France' }], 'Europe')
+console.log("59.uzd");
+console.log(addContinent([{ city: 'Tokyo', country: 'Japan' }, { city: 'Bangkok', country: 'Thailand' }], 'Asia'));
+console.log(addContinent([{ city: 'Stockholm', country: 'Sweden' }, { city: 'Paris', country: 'France' }], 'Europe'));
+
+
+// Write a function that takes an array of numbers as argument
+// Convert the array to an object
+// It should have a key for each unique value of the array
+// The corresponding object value should be the number of times the key occurs within the array
+
+const countOccurences = (arr: Array<number>): Record<number, number> => {
+    const result: Record<number, number> = {};
+    for (const num of arr) {
+        if (result[num]) {
+            result[num]++;
+        } else {
+            result[num] = 1;
+        }
+    }
+    return result;
+}
+
+console.log("60.uzd");
+console.log(countOccurences([1,2,2,3]));
+console.log(countOccurences([9,9,9,99]));
+console.log(countOccurences([4,3,2,1]));
+
+
+// Write a function that takes two date instances as arguments
+// It should return true if the dates are equal
+// It should return false otherwise
+
+const checkIfDatesAreEqual = (date1: Date, date2: Date): boolean => {
+    return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear() && date1.getMinutes() === date2.getMinutes();
+}
+
+console.log("61.uzd");
+console.log(checkIfDatesAreEqual(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 08:45:00')));
+console.log(checkIfDatesAreEqual(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 08:00:00')));
+console.log(checkIfDatesAreEqual(new Date('2001/01/01 08:00:00'), new Date('2000/01/01 08:00:00')));
+
+
+// Write a function that takes two date instances as argument
+// It should return the number of days that lies between those dates
+
+const countDaysBetweenTwoDates = (date1: Date, date2: Date): number => {
+    const oneDay = 1000 * 60 * 60 * 24;
+    return Math.floor((date2.getTime() - date1.getTime()) / oneDay);
+}
+
+console.log("62.uzd");
+console.log(countDaysBetweenTwoDates(new Date('2020-06-01'), new Date('2020-06-11')));
+console.log(countDaysBetweenTwoDates(new Date('2000-01-01'), new Date('2020-06-01')));
+
+
+// Write a function that takes two date instances as argument
+// It should return true if they fall on the exact same day
+// It should return false otherwise
+
+const isSameDay = (date1: Date, date2: Date): boolean => {
+    return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear();
+}
+
+console.log("63.uzd");
+console.log(isSameDay(new Date('2000/01/01'), new Date('2000/01/01')));
+console.log(isSameDay(new Date('2000/01/01'), new Date('2000/01/02')));
+console.log(isSameDay(new Date('2001/01/01'), new Date('2000/01/01')));
+console.log(isSameDay(new Date('2000/11/01'), new Date('2000/01/01')));
+
+
+// !SPREAD OPERATOR 
+// !Use spread operator in all tasks
+
+
+// Write a function that takes two number arrays as parameters 
+// and return an array which contains elements from both 
+// arrays
+
+// myFunction([1, 2], [3, 4]) 
 // Expected
-// [{ city: 'Stockholm', country: 'Sweden', continent: 'Europe' }, { city: 'Paris', country: 'France', continent: 'Europe' }]
+// [1, 2, 3, 4]
+
+// myFunction([1, 2], [3, 4, 5, 6]) 
+// Expected
+// [1, 2, 3, 4, 5, 6]
+
+const newArrWithSameElements = (...args: Array<Array<number>>): Array<number> => {
+    const result: Array<number> = [];
+    for (const arr of args) {
+        result.push(...arr);
+    }
+    return result;
+}
+
+console.log("64.uzd");
+console.log(newArrWithSameElements([1, 2], [3, 4]));
+console.log(newArrWithSameElements([1, 2], [3, 4, 5, 6]));
+
+
+
+
+
+
+
+
+
+
+
 
 
 
